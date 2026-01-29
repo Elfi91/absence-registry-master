@@ -1,109 +1,70 @@
-# 🚧 Work In Progress: School Registry API
+# 🎓 School Registry API – Gestione Presenze
 
-This is a Django REST API project designed to manage student absences. It allows for user authentication, student management, and tracking functionality for student absences.
+Questo progetto è una REST API sviluppata in **Django** per la gestione automatizzata delle presenze e delle assenze dei partecipanti al corso. Il sistema permette di monitorare l'andamento del corso, distinguendo tra amministratori e partecipanti, e calcolando automaticamente le statistiche di presenza.
 
-## Features
+## 👥 Il Team
+* **Chiara**: Security, Ruoli Utente e Permessi (Branch: `feature/auth-permissions`).
+* **Elisabetta**: Business Logic, Calcolo Percentuali e Statistiche (Branch: `feature/presence-stats`).
+* **Paola**: Gestione Profili e Integrazione Admin (Branch: `feature/profile-management`).
 
-*   **User Authentication**: Secure registration and login using JWT (JSON Web Tokens).
-*   **Student Management**: View detailed information about students.
-*   **Absence Tracking**: Create, view, and manage absence records for students.
-*   **Permissions**: Protected endpoints ensuring only authenticated users can access data.
+## ✨ Funzionalità Principali
 
-## key Technologies
+* **Autenticazione JWT**: Registrazione e login sicuri tramite JSON Web Tokens.
+* **Dashboard Partecipante**: Ogni studente può visualizzare esclusivamente le proprie assenze e la propria percentuale di presenza.
+* **Area Admin**: Gli amministratori hanno il controllo completo per aggiungere, modificare o eliminare record di qualsiasi partecipante.
+* **Calcolo Dinamico**: La percentuale di presenza viene calcolata in tempo reale basandosi solo sulle giornate di corso già trascorse, escludendo automaticamente le date future.
 
-*   **Python**: Core programming language.
-*   **Django**: High-level Python web framework.
-*   **Django REST Framework**: Toolkit for building Web APIs.
-*   **SimpleJWT**: JSON Web Token authentication for Django REST Framework.
-*   **SQLite**: Default database for development.
-*   **PyCharm**: IDE used for development.
+## 🛠️ Tecnologie Utilizzate
+* **Python**: Linguaggio di programmazione core.
+* **Django & Django REST Framework**: Framework per lo sviluppo del backend e delle API.
+* **SimpleJWT**: Gestione dei token di autenticazione.
+* **SQLite**: Database utilizzato per lo sviluppo locale.
 
-## Prerequisites
+## 🚀 Installazione e Setup
 
-*   Python 3.8+ installed.
-*   `pip` (Python package installer).
-
-## Installation & Setup
-
-1.  **Clone the repository:**
-
+1.  **Clona il repository:**
     ```bash
     git clone <repository_url>
     cd registro_assenze
     ```
 
-2.  **Create and activate a virtual environment:**
-
-    *   **macOS/Linux:**
+2.  **Crea e attiva un ambiente virtuale:**
+    * **macOS/Linux:**
         ```bash
         python -m venv .venv
         source .venv/bin/activate
         ```
-    *   **Windows:**
+    * **Windows:**
         ```bash
         python -m venv .venv
         .\.venv\Scripts\activate
         ```
 
-3.  **Install dependencies:**
-
+3.  **Installa le dipendenze:**
     ```bash
     pip install -r requirements.txt
     ```
 
-4.  **Run database migrations:**
-
+4.  **Esegui le migrazioni del database:**
     ```bash
     python manage.py migrate
     ```
 
-5.  **Start the development server:**
-
+5.  **Avvia il server di sviluppo:**
     ```bash
     python manage.py runserver
     ```
+    L'API sarà disponibile all'indirizzo `http://127.0.0.1:8000/`.
 
-    The API will be available at `http://127.0.0.1:8000/`.
+## 📡 Endpoint API Principali
 
-## API Endpoints
+| Metodo | Endpoint | Descrizione | Accesso |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/auth/login/` | Login e ricezione token JWT | Pubblico |
+| `GET` | `/api/students/` | Lista studenti e % presenza | Admin/User |
+| `POST` | `/api/absences/` | Crea un record di assenza | Solo Admin |
+| `GET` | `/api/absences/<id>/` | Dettaglio specifica assenza | Admin/Owner |
+| `PATCH` | `/api/students/me/` | Aggiornamento profilo personale | Partecipante |
 
-Here are the main API endpoints available:
-
-### CRUD
-
-| Endpoint | Description |
-| :--- | :--- |
-| `admin/` | Django Admin interface |
-
-### Authentication
-
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| POST | `/api/auth/register/` | Register a new user |
-| POST | `/api/auth/login/` | Login to get access and refresh tokens |
-| POST | `/api/auth/token/refresh/` | Refresh the access token |
-| POST | `/api/auth/password-change/` | Change the authenticated user's password |
-
-### Students
-
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| GET | `/api/students/` | List all students |
-| POST | `/api/students/` | Create a new student |
-| GET | `/api/students/<id>/` | Retrieve details of a specific student |
-
-### Absences
-
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| GET | `/api/absences/` | List all absences |
-| POST | `/api/absences/` | Create a new absence record |
-| GET | `/api/absences/<id>/` | Retrieve details of a specific absence |
-| PUT/PATCH | `/api/absences/<id>/` | Update a specific absence |
-| DELETE | `/api/absences/<id>/` | Delete a specific absence |
-
-## Project Structure
-
-*   `config/`: Project main configuration, settings, and URL routing.
-*   `core/`: Core functionality, including absence management and user-related views.
-*   `students/`: Student management application.
+---
+*Progetto realizzato come esercitazione per il corso di AWS Re/Start 2025/26.*
