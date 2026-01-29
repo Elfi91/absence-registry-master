@@ -12,6 +12,9 @@ class StudentSerializer(serializers.ModelSerializer):
     # 'absences' è il related_name che hai nel modello Absence
     absences = StudentAbsenceSerializer(many=True, read_only=True)
 
+    # Da qui possiamo leggere la @property che abbiamo inserito in models.py
+    presence_percentage = serializers.ReadOnlyField()
+
     class Meta:
         model = Student
-        fields = ['id', 'first_name', 'last_name', 'classroom', 'absences']
+        fields = ['id', 'first_name', 'last_name', 'classroom', 'absences', 'presence_percentage']
