@@ -4,7 +4,7 @@ from .models import Absence
 from students.serializers import StudentSerializer
 from django.contrib.auth.password_validation import validate_password
 
-# Questo mancava nel file che abbiamo aggiornato prima!
+# Questo mancava nel file che abbiamo aggiornato prima
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
