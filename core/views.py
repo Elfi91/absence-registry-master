@@ -5,6 +5,8 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.contrib.auth.models import User
 from students.models import Student
 from students.serializers import StudentSerializer
+from drf_spectacular.utils import extend_schema
+
 
 from .models import Absence
 from .serializers import AbsenceSerializer, RegisterSerializer, ChangePasswordSerializer
@@ -14,6 +16,12 @@ class ChangePasswordView(APIView):
     """Endpoint per cambiare la password. Richiede autenticazione."""
     permission_classes = [IsAuthenticated]
 
+    @extend_schema(
+        summary="Cambia la passwords",
+        description="Cambia la password",
+        tags=["Change Password"],
+        request=ChangePasswordSerializer,
+    )
     def post(self, request):
         serializer = ChangePasswordSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():

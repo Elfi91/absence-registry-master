@@ -34,7 +34,7 @@ class AbsenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Absence
         # Includiamo 'student_details' per la lettura e 'student' (ID) per la scrittura
-        fields = ['id', 'student', 'student_details', 'date', 'is_justified', 'comment', 'created_by']
+        fields = ['id', 'student', 'student_details', 'date', 'is_justified', 'created_by']
         # created_by è read_only perché viene impostato automaticamente dal backend (vedi views.py)
         read_only_fields = ['created_by']
 
