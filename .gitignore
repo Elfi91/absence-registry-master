@@ -1,0 +1,100 @@
+# =========================
+# Sistema operativo
+# =========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+
+# =========================
+# Editor e IDE
+# =========================
+.vscode/
+.idea/
+.idea
+*.swp
+*.swo
+*.swn
+*~
+.project
+.classpath
+.settings/
+
+# =========================
+# Log e file temporanei
+# =========================
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.bak
+*.old
+
+# =========================
+# Variabili d'ambiente / segreti
+# =========================
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# =========================
+# Dipendenze comuni
+# =========================
+node_modules/
+vendor/
+bower_components/
+
+# =========================
+# Build / output
+# =========================
+dist/
+build/
+out/
+target/
+coverage/
+
+# =========================
+# Cache varie
+# =========================
+.cache/
+.npm/
+.yarn/
+.pnpm-debug.log*
+.eslintcache
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# =========================
+# Java
+# =========================
+*.class
+*.jar
+*.war
+*.ear
+
+# =========================
+# Macchine virtuali / container
+# =========================
+.vagrant/
+docker-data/
+
+# =========================
+# Database locali
+# =========================
+*.sqlite
+*.sqlite3
+*.db
+*.db3
